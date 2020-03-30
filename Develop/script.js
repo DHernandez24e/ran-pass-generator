@@ -1,5 +1,5 @@
 var charStrings = {
-  special: '*;<>()[]{}#$?!^|',
+  symbols: '*;<>()[]{}#$?!^|',
   lowerCase: 'abcdefghijklmnopqrstuvwxyz',
   upperCase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   numbers: '0123456789'
@@ -8,27 +8,50 @@ var charStrings = {
 var charAmount = prompt('How many characters would you like the password to be? Please choose between 8 and 128.');
 
   if (charAmount >= 8 && charAmount <= 128) {
-    console.log(charAmount);
 
-    var charSpecialPrompt = confirm('Would you like to use special characters?');
+    var charSymbolPrompt = confirm('Would you like to use symbols?');
     var charLowerCasePrompt = confirm('Would you like to use lower case characters?');
     var charUpperCasePrompt = confirm('Would you like to use upper case characters?');
-    var charNumbersPrompt = confirm('Would you like to use numbers?')
+    var charNumberPrompt = confirm('Would you like to use numbers?')
 
     } else {
     alert('Invalid amount of characters');
   }
 
-  var charSpecial = (charSpecialPrompt === true, charStrings.special);
-  var charLowerCase = (charLowerCasePrompt === true);
-  var charUpperCase = (charUpperCasePrompt === true);
-  var charNumbers = (charNumbersPrompt === true);
-  
-  if (charSpecial || charLowerCase || charUpperCase || charNumbers) {
-    for (var i = 0; i < charAmount; i++) {
+  var selected = [];
 
+  if (charSymbolPrompt === true) {
+    selected.push(charStrings.symbols);
+  } 
+
+  if (charLowerCasePrompt === true) {
+    selected.push(charStrings.lowerCase);
+  } 
+
+  if (charUpperCasePrompt === true) {
+    selected.push(charStrings.upperCase);
+  } 
+
+  if (charNumberPrompt === true) {
+    selected.push(charStrings.numbers);
+  } 
+
+  var possibleChances = selected.join("");
+
+  console.log(selected.join(""));
+
+  var random = [];
+  
+  for ( var i = 0; i < charAmount ; i++) {
+    random.push(possibleChances[Math.floor(Math.random() * possibleChances.length)]);
+    console.log(possibleChances[Math.floor(Math.random() * possibleChances.length)])
     }
-  }
+    
+    toString(random);
+
+    console.log(random);
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
